@@ -1,0 +1,5 @@
+name = Rochester Themeing
+description = Allows for custom themeing of content
+core = 7.x
+
+stylesheets[all][] = css/rochester_theming.theme.css

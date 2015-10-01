@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function rochester_theming_theme_registry_alter(&$theme_registry) {
+  // Override the default field-collection-item.tpl.php with our own.
+    
+  if (isset($theme_registry['islandora_newspaper'])) {
+    $module_path = drupal_get_path('module', 'rochester_theming');
+    $theme_registry['islandora_newspaper']['theme path'] = $module_path;
+    $theme_registry['islandora_newspaper']['template'] = $module_path . '/templates/islandora-newspaper';
+  }
+}
