@@ -39,6 +39,7 @@
 
 <script>
     (function ($) {
+        
         var percentangeOfWindow = .75;
          // Use jQuery with the shortcut:
         // Here we immediately call the function with jQuery as the parameter.
@@ -68,17 +69,34 @@
                     }                 
                 });
             });
+            var heightOfTabList = $(".vertical-tabs-list").height() + 30;
             
             var viewportHeight = $( window ).height();
+            var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
             
-            // make the tab list % height of the view port
-            $(".vertical-tabs-list").height(Math.round(viewportHeight * percentangeOfWindow));
+            console.log(heightOfTabList, "viewport height");
+            console.log(suggestedHeight, "suggested height");
+            if( suggestedHeight > heightOfTabList){
+                // make the tab list % height of the view port
+                $(".vertical-tabs-list").height(heightOfTabList);
+            } else {
+                $(".vertical-tabs-list").height(suggestedHeight);
+            }
+            
         });
         $( window ).resize(function() {
+            var heightOfTabList = $(".vertical-tabs-list").height() + 30;
             var viewportHeight = $( window ).height();
-            
-            // make the tab list % height of the view port
-            $(".vertical-tabs-list").height(Math.round(viewportHeight * percentangeOfWindow));
+            var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
+           
+            console.log(heightOfTabList, "viewport height");
+            console.log(suggestedHeight, "suggested height");
+            if( suggestedHeight > heightOfTabList){
+                // make the tab list % height of the view port
+                $(".vertical-tabs-list").height(heightOfTabList);
+            } else {
+                $(".vertical-tabs-list").height(suggestedHeight);
+            }
         });
     }(jQuery));
    
