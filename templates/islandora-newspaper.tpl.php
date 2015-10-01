@@ -41,6 +41,9 @@
     (function ($) {
         
         var percentangeOfWindow = .75;
+        //buffer to give the bottmo of the list so no scroll bar appears 
+        //when big enough
+        var listBuffer = 30;
          // Use jQuery with the shortcut:
         // Here we immediately call the function with jQuery as the parameter.
         $( document ).ready(function() {
@@ -69,13 +72,12 @@
                     }                 
                 });
             });
-            var heightOfTabList = $(".vertical-tabs-list").height() + 30;
+            
+            var heightOfTabList = $(".vertical-tabs-list").height() + listBuffer;
             
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
             
-            console.log(heightOfTabList, "viewport height");
-            console.log(suggestedHeight, "suggested height");
             if( suggestedHeight > heightOfTabList){
                 // make the tab list % height of the view port
                 $(".vertical-tabs-list").height(heightOfTabList);
@@ -85,12 +87,10 @@
             
         });
         $( window ).resize(function() {
-            var heightOfTabList = $(".vertical-tabs-list").height() + 30;
+            var heightOfTabList = $(".vertical-tabs-list").height() + listBuffer;
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
            
-            console.log(heightOfTabList, "viewport height");
-            console.log(suggestedHeight, "suggested height");
             if( suggestedHeight > heightOfTabList){
                 // make the tab list % height of the view port
                 $(".vertical-tabs-list").height(heightOfTabList);
