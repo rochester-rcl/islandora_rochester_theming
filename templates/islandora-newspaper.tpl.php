@@ -40,10 +40,10 @@
 <script>
     (function ($) {
         
-        var percentangeOfWindow = .75;
+        var percentangeOfWindow = .45;
         //buffer to give the bottmo of the list so no scroll bar appears 
         //when big enough
-        var listBuffer = 30;
+        var listBuffer = 50;
          // Use jQuery with the shortcut:
         // Here we immediately call the function with jQuery as the parameter.
         $( document ).ready(function() {
@@ -55,7 +55,6 @@
             });
             
             $('.vertical-tab-button a').click(function(){
-                
                 
                 var tabPosition = $(".vertical-tab-button.selected").offset().top;
                 var containerPosition = $(".vertical-tabs").offset().top;
@@ -73,27 +72,31 @@
                 });
             });
             
-            var heightOfTabList = $(".vertical-tabs-list").height() + listBuffer;
+            var tabListBottom = $(".vertical-tab-button.last").position().top + listBuffer;
             
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
             
-            if( suggestedHeight > heightOfTabList){
+            console.log("tabListBottom", tabListBottom);
+            console.log("suggestedHeight", suggestedHeight);
+            if( suggestedHeight > tabListBottom){
                 // make the tab list % height of the view port
-                $(".vertical-tabs-list").height(heightOfTabList);
+                $(".vertical-tabs-list").height(tabListBottom);
             } else {
                 $(".vertical-tabs-list").height(suggestedHeight);
             }
             
         });
         $( window ).resize(function() {
-            var heightOfTabList = $(".vertical-tabs-list").height() + listBuffer;
+            var tabListBottom = $(".vertical-tab-button.last").position().top + listBuffer;
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
            
-            if( suggestedHeight > heightOfTabList){
+            console.log("tabListBottom", tabListBottom);
+            console.log("suggestedHeight", suggestedHeight);
+            if( suggestedHeight > tabListBottom){
                 // make the tab list % height of the view port
-                $(".vertical-tabs-list").height(heightOfTabList);
+                $(".vertical-tabs-list").height(tabListBottom);
             } else {
                 $(".vertical-tabs-list").height(suggestedHeight);
             }
