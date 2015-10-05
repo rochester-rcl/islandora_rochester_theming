@@ -77,8 +77,6 @@
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
             
-            console.log("tabListBottom", tabListBottom);
-            console.log("suggestedHeight", suggestedHeight);
             if( suggestedHeight > tabListBottom){
                 // make the tab list % height of the view port
                 $(".vertical-tabs-list").height(tabListBottom);
@@ -92,8 +90,6 @@
             var viewportHeight = $( window ).height();
             var suggestedHeight = Math.round(viewportHeight * percentangeOfWindow);
            
-            console.log("tabListBottom", tabListBottom);
-            console.log("suggestedHeight", suggestedHeight);
             if( suggestedHeight > tabListBottom){
                 // make the tab list % height of the view port
                 $(".vertical-tabs-list").height(tabListBottom);
